@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ngo_hackathon/features/login&registration/login.dart';
+import 'package:ngo_hackathon/features/login/presentation/login.dart';
 import 'package:ngo_hackathon/home.dart';
 
 void main() async {
@@ -12,7 +12,7 @@ void main() async {
     MaterialApp(
       home: const LoginCheck(),
       routes: {
-        '/': (context) => const LoginCheck(),
+        // '/': (context) => const LoginCheck(),
         // '/login': (context) => Login(),
         // '/register': (context) => Registration(),
         // '/home': (context) => Home(),

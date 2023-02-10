@@ -49,10 +49,10 @@ class Registration extends StatelessWidget {
       // resizeToAvoidBottomInset: false,
       // backgroundColor: Colors.grey[900],
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/BackgroundStars.jpeg'),
-                fit: BoxFit.fill)),
+        // decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //         image: AssetImage('images/BackgroundStars.jpeg'),
+        //         fit: BoxFit.fill)),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
           child: Form(
