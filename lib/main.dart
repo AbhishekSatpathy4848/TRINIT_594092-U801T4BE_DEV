@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ngo_hackathon/features/login/presentation/login.dart';
-import 'package:ngo_hackathon/home.dart';
+import 'package:ngo_hackathon/core/pages/home.dart';
+import 'package:ngo_hackathon/root_page.dart';
+
+import 'features/registration/presentation/registration.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,9 +16,9 @@ void main() async {
       home: const LoginCheck(),
       routes: {
         // '/': (context) => const LoginCheck(),
-        // '/login': (context) => Login(),
-        // '/register': (context) => Registration(),
-        // '/home': (context) => Home(),
+        '/login': (context) => Login(),
+        '/register': (context) => Registration(),
+        '/home': (context) => const RootPage(),
       },
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -39,7 +42,7 @@ class LoginCheck extends StatelessWidget {
                 // print("Called-main filling hive");
                 // Boxes.fillHive();
                 // print("Done-main filling Hive");
-                return const HomePage();
+                return const RootPage();
               } else if (snapshot.hasError) {
                 print("Error");
                 // Fluttertoast.showToast(

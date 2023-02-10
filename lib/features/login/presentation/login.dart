@@ -85,10 +85,10 @@ class Login extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       // backgroundColor: const Color.fromRGBO(26, 26, 26, 1),
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/BackgroundStars.jpeg'),
-                fit: BoxFit.cover)),
+        // decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //         image: AssetImage('images/BackgroundStars.jpeg'),
+        //         fit: BoxFit.cover)),
         child: Form(
           key: _formKey,
           child: Padding(
