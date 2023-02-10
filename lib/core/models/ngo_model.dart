@@ -1,5 +1,5 @@
-import 'package:ngo_hackathon/core/community_model.dart';
-import 'package:ngo_hackathon/core/news_model.dart';
+import 'package:ngo_hackathon/core/models/community_model.dart';
+import 'package:ngo_hackathon/core/models/news_model.dart';
 
 class NgoModel {
   String? name;

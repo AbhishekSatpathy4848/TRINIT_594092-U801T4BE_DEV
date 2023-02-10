@@ -1,5 +1,5 @@
-import 'package:ngo_hackathon/core/community_model.dart';
-import 'package:ngo_hackathon/core/ngo_model.dart';
+import 'package:ngo_hackathon/core/models/community_model.dart';
+import 'package:ngo_hackathon/core/models/ngo_model.dart';
 
 class PhilanthropistModel {
   String? name;
