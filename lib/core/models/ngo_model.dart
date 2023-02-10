@@ -7,7 +7,7 @@ class NgoModel {
   String? profilePhoto;
   List<String>? photos;
   List<String>? fieldsOfImpact;
-  List<String>? previousString;
+  List<String>? previousWork;
   List<List<String>>?
       currentGoals; //first element is the goal and the next is the method of achieving it
   String? impactOnEnvironment;
