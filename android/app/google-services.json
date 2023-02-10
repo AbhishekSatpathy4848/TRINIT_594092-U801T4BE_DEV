@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "116505179078",
+    "project_id": "ngo-hackathon-f440a",
+    "storage_bucket": "ngo-hackathon-f440a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116505179078:android:2421792cd08304b99038c7",
+        "android_client_info": {
+          "package_name": "com.nitk.ngo_hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116505179078-v31db9r3h195kup3g7e5o3qskaa2tf9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsjfby-7Tc2yVjxtCFcq1Jf3dKgRkX-N0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116505179078-v31db9r3h195kup3g7e5o3qskaa2tf9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
