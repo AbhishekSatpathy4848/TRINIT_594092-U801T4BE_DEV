@@ -5,7 +5,7 @@ class NgoModel {
   String? name;
   String? description;
   String? profilePhoto;
-  List<String>? photo;
+  List<String>? photos;
   List<String>? fieldsOfImpact;
   List<String>? previousString;
   List<List<String>>?
