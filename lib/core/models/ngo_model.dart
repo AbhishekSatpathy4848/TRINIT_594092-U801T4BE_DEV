@@ -1,6 +1,7 @@
 import 'package:ngo_hackathon/core/models/community_model.dart';
 import 'package:ngo_hackathon/core/models/news_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'ngo_model.g.dart';
 
@@ -43,6 +44,12 @@ class NgoModel {
       required this.community,
       required this.news,
       required this.firstTimeLogin});
+
+  Future createNgo(NgoModel ngo) async {
+    final docNgo = FirebaseFirestore.instance.collection('Ngo').doc(ngo.name);
+
+    await docNgo.set(ngo.toJson());
+  }
 
   factory NgoModel.fromJson(Map<String, dynamic> json) =>
       _$NgoModelFromJson(json);

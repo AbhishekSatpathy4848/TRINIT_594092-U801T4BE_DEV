@@ -33,15 +33,15 @@ class PhilanthropistModel {
       required this.firstTimeLogin});
 
   Future createPhilanthropist(PhilanthropistModel philanthropist) async {
-    final docPhil = await FirebaseFirestore.instance
+    final docPhil = FirebaseFirestore.instance
         .collection('Philanthropist')
-        .doc(philanthropist.email)
-        .set(philanthropist.toJson());
+        .doc(philanthropist.email);
+
+    await docPhil.set(philanthropist.toJson());
   }
 
   factory PhilanthropistModel.fromJson(Map<String, dynamic> json) =>
       _$PhilanthropistModelFromJson(json);
 
-  /// Connect the generated [_$PhilanthropistModelToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$PhilanthropistModelToJson(this);
 }
