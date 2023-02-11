@@ -20,6 +20,7 @@ class _RootPageState extends State<RootPage> {
   bool firstTimeLogin = true;
   bool showNavBar = true;
   String s_type = 'Philanthropist';
+  List<Widget> screens = [];
 
   Future checkData() async {
     await FirebaseFirestore.instance.collection('users').get().then((value) => {
@@ -28,6 +29,11 @@ class _RootPageState extends State<RootPage> {
               firstTimeLogin = false;
               showNavBar = true;
               s_type = element['type'];
+              screens = <Widget>[
+                const HomePage(),
+                const SearchPage(),
+                ProfilePage(type: s_type),
+              ];
               //print(firstTimeLogin);
             }
           })
@@ -36,11 +42,7 @@ class _RootPageState extends State<RootPage> {
   }
 
   int currentpage = 0;
-  final screens = [
-    const HomePage(),
-    const SearchPage(),
-    ProfilePage(type: 'Philanthropist'),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

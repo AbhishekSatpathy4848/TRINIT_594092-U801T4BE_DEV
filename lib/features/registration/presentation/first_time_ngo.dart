@@ -324,6 +324,7 @@ class _NewNGOState extends State<NewNGO> {
                     mission.text.isNotEmpty &&
                     impact.text.isNotEmpty) {
                   NgoModel ngoModel = NgoModel(
+                      userEmail: FirebaseAuth.instance.currentUser!.email,
                       city: city.text,
                       description: desc.text,
                       fundingNeeds: int.parse(funding.text),

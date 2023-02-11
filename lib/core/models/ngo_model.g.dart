@@ -8,6 +8,7 @@ part of 'ngo_model.dart';
 
 NgoModel _$NgoModelFromJson(Map<String, dynamic> json) => NgoModel(
       name: json['name'] as String?,
+      userEmail: json['userEmail'] as String?,
       description: json['description'] as String?,
       profilePhoto: json['profilePhoto'] as String?,
       photos:
@@ -36,6 +37,7 @@ NgoModel _$NgoModelFromJson(Map<String, dynamic> json) => NgoModel(
 
 Map<String, dynamic> _$NgoModelToJson(NgoModel instance) => <String, dynamic>{
       'name': instance.name,
+      'userEmail': instance.userEmail,
       'description': instance.description,
       'profilePhoto': instance.profilePhoto,
       'photos': instance.photos,

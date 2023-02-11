@@ -14,13 +14,14 @@ class NgoProfile extends StatefulWidget {
 }
 
 class _NgoProfileState extends State<NgoProfile> {
-  Future<NgoModel> getPhilanthropist() async {
-    // String email = FirebaseAuth.instance.currentUser!.email!;
+  Future<NgoModel> getNgo() async {
+    String email = FirebaseAuth.instance.currentUser!.email!;
     Map<String, dynamic> json = await FirebaseFirestore.instance
-        .collection('NGO')
-        .doc()
+        .collection('Ngo')
+        .doc(email)
         .get()
         .then((value) => value.data() as Map<String, dynamic>);
+    print(json);
     return NgoModel.fromJson(json);
   }
 
@@ -28,18 +29,23 @@ class _NgoProfileState extends State<NgoProfile> {
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-        future: getPhilanthropist(),
+        future: getNgo(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: Placeholder(),
+              child: CircularProgressIndicator(),
             );
           } else {
             return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   SizedBox(
-                      child: Image.network(snapshot.data!.profilePhoto!),
+                      child: Image.network(snapshot.data!.profilePhoto == null
+                          ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png'
+                          : snapshot.data!.profilePhoto!),
                       height: 200,
                       width: 200),
                   const SizedBox(
@@ -56,17 +62,29 @@ class _NgoProfileState extends State<NgoProfile> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
+                  Column(
                     children: [
-                      const Text('Email: ',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                      Column(
+                      Row(
                         children: [
-                          for (int i = 0;
-                              i < snapshot.data!.emails!.length;
-                              i++)
-                            Text(snapshot.data!.emails![i])
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              const Text('Email: ',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold)),
+                              Column(
+                                children: [
+                                  for (int i = 0;
+                                      i < snapshot.data!.emails!.length;
+                                      i++)
+                                    Text(snapshot.data!.emails![i])
+                                ],
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(

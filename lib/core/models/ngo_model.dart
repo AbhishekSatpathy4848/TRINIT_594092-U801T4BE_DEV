@@ -8,6 +8,7 @@ part 'ngo_model.g.dart';
 @JsonSerializable()
 class NgoModel {
   String? name;
+  String? userEmail;
   String? description;
   String? profilePhoto;
   List<String>? photos;
@@ -30,6 +31,7 @@ class NgoModel {
 
   NgoModel(
       {required this.name,
+      required this.userEmail,
       required this.description,
       required this.profilePhoto,
       required this.photos,
@@ -50,7 +52,8 @@ class NgoModel {
       required this.firstTimeLogin});
 
   Future createNgo(NgoModel ngo) async {
-    final docNgo = FirebaseFirestore.instance.collection('Ngo').doc(emails![0]);
+    final docNgo =
+        FirebaseFirestore.instance.collection('Ngo').doc(ngo.userEmail);
 
     await docNgo.set(ngo.toJson());
   }
