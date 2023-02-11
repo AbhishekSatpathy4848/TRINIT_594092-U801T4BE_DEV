@@ -108,7 +108,7 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Let's Build some tiny habits!",
+                  "Let's Build a better society!",
                   style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
