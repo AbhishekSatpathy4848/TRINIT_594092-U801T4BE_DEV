@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ngo_hackathon/features/registration/presentation/registration.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -107,7 +108,7 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Let's Build some tiny habits!",
+                  "Let's Build a better society!",
                   style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
@@ -193,7 +194,10 @@ class Login extends StatelessWidget {
                           //   if(_formKey.currentState!.validate())
                           //     return;
                           // }
-                          Navigator.pushNamed(context, '/register');
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Registration();
+                          }));
                         },
                         child: const Text("Create Account"))
                   ],

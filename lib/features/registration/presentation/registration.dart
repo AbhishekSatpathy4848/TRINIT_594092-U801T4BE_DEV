@@ -140,9 +140,11 @@ class Registration extends StatelessWidget {
                     if (_formKey.currentState!.validate()) {
                       if (passwordController.text.trim() ==
                           confirmPasswordController.text.trim()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Registering User...'),duration: Duration(days: 365),));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Registering User...'),
+                          duration: Duration(days: 365),
+                        ));
                         await registerUser(context);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
