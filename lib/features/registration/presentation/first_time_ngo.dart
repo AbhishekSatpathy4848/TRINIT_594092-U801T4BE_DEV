@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ngo_hackathon/core/models/ngo_model.dart';
+import 'package:ngo_hackathon/root_page.dart';
 
 class NewNGO extends StatefulWidget {
   const NewNGO({super.key});
@@ -175,13 +178,14 @@ class _NewNGOState extends State<NewNGO> {
             ),
             TextFormField(
               controller: phone,
+              keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
-                hintText: 'Enter your phone number',
+                hintText: 'Enter your phone numbers',
                 hintStyle: TextStyle(fontSize: 14),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your phone number';
+                  return 'Please enter your phone numbers';
                 }
                 return null;
               },
@@ -196,12 +200,12 @@ class _NewNGOState extends State<NewNGO> {
             TextFormField(
               controller: email,
               decoration: const InputDecoration(
-                hintText: 'Enter your email',
+                hintText: 'Enter your emails',
                 hintStyle: TextStyle(fontSize: 14),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
+                  return 'Please enter your emails';
                 }
                 return null;
               },
@@ -216,12 +220,12 @@ class _NewNGOState extends State<NewNGO> {
             TextFormField(
               controller: previousWork,
               decoration: const InputDecoration(
-                hintText: 'Enter your previous work',
+                hintText: 'Enter your previous works',
                 hintStyle: TextStyle(fontSize: 14),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your previous work';
+                  return 'Please enter a brief description your previous works';
                 }
                 return null;
               },
@@ -230,13 +234,13 @@ class _NewNGOState extends State<NewNGO> {
           const SizedBox(height: 5),
           Column(children: [
             const Text(
-              'Current Goal',
+              'Current Goal(s)',
               style: TextStyle(fontSize: 14),
             ),
             TextFormField(
               controller: currentGoal,
               decoration: const InputDecoration(
-                hintText: 'Enter your current goal',
+                hintText: 'Enter your current goal(s)',
                 hintStyle: TextStyle(fontSize: 14),
               ),
               validator: (value) {
@@ -275,6 +279,7 @@ class _NewNGOState extends State<NewNGO> {
             ),
             TextFormField(
               controller: funding,
+              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 hintText: 'Enter funding required',
                 hintStyle: TextStyle(fontSize: 14),
@@ -331,15 +336,25 @@ class _NewNGOState extends State<NewNGO> {
                       profilePhoto: null,
                       photos: null,
                       news: null,
-                      phoneNumbers: phone.text.split(","),
+                      phoneNumbers: phone.text.split(" "),
                       followerCount: 0,
                       firstTimeLogin: true,
                       fieldsOfImpact: [choice!],
                       previousWork: previousWork.text,
                       type: choice,
-                      emails: email.text.split(","));
+                      emails: email.text.split(" "));
                   print(ngoModel.toJson());
+                  final docUser =
+                      FirebaseFirestore.instance.collection('users').doc();
+                  docUser.set({
+                    'email': FirebaseAuth.instance.currentUser!.email,
+                    'type': 'NGO'
+                  });
                   ngoModel.createNgo(ngoModel);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RootPage()));
                 } else {
                   SnackBar snackBar = const SnackBar(
                     content: Text("Please fill all the fields"),

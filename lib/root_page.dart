@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ngo_hackathon/core/pages/search_page.dart';
 import 'package:ngo_hackathon/features/registration/presentation/first_time_ngo.dart';
 import 'package:ngo_hackathon/features/registration/presentation/first_time_philanthrophist.dart';
+import 'package:ngo_hackathon/features/registration/presentation/registration_full.dart';
 
 import 'core/pages/home.dart';
 import 'core/pages/profile_page.dart';
@@ -34,7 +35,7 @@ class _RootPageState extends State<RootPage> {
 
   int currentpage = 0;
   final screens = [
-    const NewNGO(),
+    const HomePage(),
     const SearchPage(),
     const ProfilePage(),
   ];
@@ -64,7 +65,7 @@ class _RootPageState extends State<RootPage> {
             } else if (snapshot.connectionState == ConnectionState.done &&
                 firstTimeLogin) {
               //print('abc');
-              return const NewPhilanthrophist();
+              return const RegComplete();
             }
             //print('123');
 
