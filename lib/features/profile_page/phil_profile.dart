@@ -31,7 +31,7 @@ class _PhilProfileState extends State<PhilProfile> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: Placeholder(),
+              child: CircularProgressIndicator(),
             );
           } else {
             return Padding(
