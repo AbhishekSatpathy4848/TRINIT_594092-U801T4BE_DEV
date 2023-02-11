@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngo_hackathon/core/pages/ngo_page.dart';
 
 class FilterSearch extends StatefulWidget {
   const FilterSearch({super.key});
@@ -9,7 +10,7 @@ class FilterSearch extends StatefulWidget {
 
 class _FilterSearchState extends State<FilterSearch> {
   final _searchController = TextEditingController();
-  final _ngoList = ['NGO 1', 'NGO 2', 'NGO 3', 'NGO 4'];
+  final ngoList = [' CRY (Child Rights and You)', 'Smile Foundation', 'Give India Foundation', 'Goonj'];
   String? _selectedNgo;
 
   @override
@@ -63,27 +64,97 @@ class _FilterSearchState extends State<FilterSearch> {
           ),
           SizedBox(height: 15,),
           Expanded(
-            child: ListView.builder(
-              itemCount: _ngoList.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ListTile(
-                      title: Text(_ngoList[index]),
-                      onTap: () {
-                        setState(() {
-                          _selectedNgo = _ngoList[index];
-                        });
-                      },
-                      selected: _ngoList[index] == _selectedNgo,
+        child: ListView.builder(
+          itemCount: ngoList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(0.0, 5.0),
+                      blurRadius: 10.0,
                     ),
-                    const Divider(
-                      color: Colors.lightGreenAccent,
-                    )
                   ],
-                );
-              },
-            ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 10.0,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
+                          // image: DecorationImage(
+                          //   image: NetworkImage(ngoList[index].imageUrl),
+                          //   fit: BoxFit.cover,
+                          // ),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Text(
+                        ngoList[index],
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      // SizedBox(height: 8.0),
+                      // Text(
+                      //   ngoList[index].mission,
+                      //   style: Theme.of(context).textTheme.subtitle1,
+                      // ),
+                      SizedBox(height: 16.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            // color: Colors.green,
+                            // textColor: Colors.white,
+                            // padding: EdgeInsets.all(16.0),
+                            onPressed: () {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return NgoProfilePage(ngoName: ngoList[index],);
+                          }));
+                            },
+                            child: Text('Learn More'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+            // child: ListView.builder(
+            //   itemCount: _ngoList.length,
+            //   itemBuilder: (context, index) {
+            //     return Column(
+            //       children: [
+            //         ListTile(
+            //           title: Text(_ngoList[index]),
+            //           onTap: () {
+            //             setState(() {
+            //               _selectedNgo = _ngoList[index];
+            //             });
+            //           },
+            //           selected: _ngoList[index] == _selectedNgo,
+            //         ),
+            //         const Divider(
+            //           color: Colors.lightGreenAccent,
+            //         )
+            //       ],
+            //     );
+            //   },
+            // ),
           ),
         ],
       ),
