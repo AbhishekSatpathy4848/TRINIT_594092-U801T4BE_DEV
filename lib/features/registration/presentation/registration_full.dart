@@ -15,15 +15,7 @@ class _RegCompleteState extends State<RegComplete> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Registration'),
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            color: Colors.grey[150],
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        appBar: null,
         body: Container(
             child: DefaultTabController(
           length: 2,
