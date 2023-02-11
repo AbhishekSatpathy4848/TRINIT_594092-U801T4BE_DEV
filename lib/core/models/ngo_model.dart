@@ -1,6 +1,10 @@
 import 'package:ngo_hackathon/core/models/community_model.dart';
 import 'package:ngo_hackathon/core/models/news_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ngo_model.g.dart';
+
+@JsonSerializable()
 class NgoModel {
   String? name;
   String? description;
@@ -17,8 +21,31 @@ class NgoModel {
   String? state;
   List<String>? phoneNumbers;
   List<String>? emails;
-  CommunityModel? community;
-  List<News>? news;
+  String? community;
+  List<String>? news;
+  bool? firstTimeLogin;
+
+  NgoModel(
+      {required this.name,
+      required this.description,
+      required this.profilePhoto,
+      required this.photos,
+      required this.fieldsOfImpact,
+      required this.previousWork,
+      required this.currentGoals,
+      required this.impactOnEnvironment,
+      required this.followerCount,
+      required this.fundingNeeds,
+      required this.city,
+      required this.state,
+      required this.phoneNumbers,
+      required this.emails,
+      required this.community,
+      required this.news,
+      required this.firstTimeLogin});
+
+  factory NgoModel.fromJson(Map<String, dynamic> json) =>
+      _$NgoModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NgoModelToJson(this);
 }
-
-
