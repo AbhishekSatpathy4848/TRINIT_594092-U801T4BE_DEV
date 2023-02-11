@@ -32,6 +32,28 @@ class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
   TextEditingController state = TextEditingController();
   TextEditingController desc = TextEditingController();
   bool firstTimeLogin = true;
+
+  List<String> impactAreas = [
+    "Charitable Orientation",
+    "Service Orientation",
+    "Participatory Orientation",
+    "Empowering Orientation",
+    "Community-based Organizations (CBOs)",
+    "Citywide Organizations",
+    "National NGOs",
+    "International NGOs."
+  ];
+  List<bool> isSelected = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -158,6 +180,146 @@ class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
         const SizedBox(
           height: 5,
         ),
+        const SizedBox(
+          height: 5,
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "Select the type of organizations you would like to support",
+            style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const Text(
+                    'Service Orientation',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[0],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[0] = !isSelected[0];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Participatory Orientation',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[1],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[1] = !isSelected[1];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Empowering Orientation',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[2],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[2] = !isSelected[2];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Community-based Organizations (CBOs)',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[3],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[3] = !isSelected[3];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Citywide Organizations',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[4],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[4] = !isSelected[4];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Statewide Organizations',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[5],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[5] = !isSelected[5];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'National Organizations',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[6],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[6] = !isSelected[6];
+                        });
+                      }),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'International Organizations',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Checkbox(
+                      value: isSelected[7],
+                      onChanged: (v) {
+                        setState(() {
+                          isSelected[7] = !isSelected[7];
+                        });
+                      }),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
         ElevatedButton(
             onPressed: () {
               if (nameController.text.isNotEmpty &&
@@ -165,13 +327,19 @@ class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
                   city.text.isNotEmpty &&
                   state.text.isNotEmpty &&
                   desc.text.isNotEmpty) {
+                List<String> impact = [];
+                for (int i = 0; i < isSelected.length; i++) {
+                  if (isSelected[i]) {
+                    impact.add(impactAreas[i]);
+                  }
+                }
                 PhilanthropistModel philanthropistModel = PhilanthropistModel(
                     name: nameController.text,
                     email: email,
                     phoneNo: phone.text,
                     profilePhoto:
                         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
-                    preferredAreaofimpact: ['Education', 'Healthcare'],
+                    preferredAreaofimpact: impact.isEmpty ? null : impact,
                     followingNgo: null,
                     city: city.text,
                     state: state.text,
