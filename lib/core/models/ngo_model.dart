@@ -50,7 +50,7 @@ class NgoModel {
       required this.firstTimeLogin});
 
   Future createNgo(NgoModel ngo) async {
-    final docNgo = FirebaseFirestore.instance.collection('Ngo').doc(ngo.name);
+    final docNgo = FirebaseFirestore.instance.collection('Ngo').doc(emails![0]);
 
     await docNgo.set(ngo.toJson());
   }

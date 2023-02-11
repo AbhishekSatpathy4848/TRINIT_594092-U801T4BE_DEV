@@ -19,6 +19,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   bool firstTimeLogin = true;
   bool showNavBar = true;
+  String s_type = 'Philanthropist';
 
   Future checkData() async {
     await FirebaseFirestore.instance.collection('users').get().then((value) => {
@@ -26,6 +27,7 @@ class _RootPageState extends State<RootPage> {
             if (element['email'] == FirebaseAuth.instance.currentUser!.email) {
               firstTimeLogin = false;
               showNavBar = true;
+              s_type = element['type'];
               //print(firstTimeLogin);
             }
           })
@@ -37,7 +39,7 @@ class _RootPageState extends State<RootPage> {
   final screens = [
     const HomePage(),
     const SearchPage(),
-    const ProfilePage(),
+    ProfilePage(type: 'Philanthropist'),
   ];
   @override
   Widget build(BuildContext context) {
