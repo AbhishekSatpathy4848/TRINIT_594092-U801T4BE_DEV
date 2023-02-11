@@ -16,6 +16,7 @@ class NewPhilanthrophist extends StatefulWidget {
 }
 
 class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
+  @override
   void dispose() {
     nameController.dispose();
     phone.dispose();
@@ -352,6 +353,11 @@ class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
                 philanthropistModel.createPhilanthropist(philanthropistModel);
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const RootPage()));
+              } else {
+                SnackBar snackBar = const SnackBar(
+                  content: Text("Please fill all the fields"),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             },
             child: const Text('Submit'))

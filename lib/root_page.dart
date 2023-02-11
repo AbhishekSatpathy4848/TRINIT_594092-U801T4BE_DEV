@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ngo_hackathon/core/pages/search_page.dart';
+import 'package:ngo_hackathon/features/registration/presentation/first_time_ngo.dart';
 import 'package:ngo_hackathon/features/registration/presentation/first_time_philanthrophist.dart';
+import 'package:ngo_hackathon/features/registration/presentation/registration_full.dart';
 
 import 'core/pages/home.dart';
 import 'core/pages/profile_page.dart';
@@ -63,7 +65,7 @@ class _RootPageState extends State<RootPage> {
             } else if (snapshot.connectionState == ConnectionState.done &&
                 firstTimeLogin) {
               //print('abc');
-              return const NewPhilanthrophist();
+              return const RegComplete();
             }
             //print('123');
 
