@@ -11,11 +11,11 @@ List<NgoModel> matchBasedOnFieldOfImpact(
         matches++;
       }
     }
-    matchesMap[ngo] = matches;
+    if(matches != 0)  matchesMap[ngo] = matches;
   }
   Map.fromEntries(matchesMap.entries.toList()
     ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-    
+
   return matchesMap.keys.toList();
 }
 
