@@ -16,12 +16,8 @@ NgoModel _$NgoModelFromJson(Map<String, dynamic> json) => NgoModel(
       fieldsOfImpact: (json['fieldsOfImpact'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      previousWork: (json['previousWork'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      currentGoals: (json['currentGoals'] as List<dynamic>?)
-          ?.map((e) => (e as List<dynamic>).map((e) => e as String).toList())
-          .toList(),
+      previousWork: json['previousWork'] as String?,
+      currentGoals: json['currentGoals'] as String,
       impactOnEnvironment: json['impactOnEnvironment'] as String?,
       followerCount: json['followerCount'] as int?,
       fundingNeeds: json['fundingNeeds'] as int?,

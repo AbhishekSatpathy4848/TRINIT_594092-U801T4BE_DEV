@@ -16,6 +16,7 @@ class NewPhilanthrophist extends StatefulWidget {
 }
 
 class _NewPhilanthrophistState extends State<NewPhilanthrophist> {
+  @override
   void dispose() {
     nameController.dispose();
     phone.dispose();
