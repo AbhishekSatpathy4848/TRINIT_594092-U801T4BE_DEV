@@ -12,6 +12,7 @@ NgoModel _$NgoModelFromJson(Map<String, dynamic> json) => NgoModel(
       profilePhoto: json['profilePhoto'] as String?,
       photos:
           (json['photos'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      type: json['type'] as String?,
       fieldsOfImpact: (json['fieldsOfImpact'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -33,6 +34,7 @@ NgoModel _$NgoModelFromJson(Map<String, dynamic> json) => NgoModel(
           (json['emails'] as List<dynamic>?)?.map((e) => e as String).toList(),
       community: json['community'] as String?,
       news: (json['news'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      mission: json['mission'] as String?,
       firstTimeLogin: json['firstTimeLogin'] as bool?,
     );
 
@@ -41,6 +43,7 @@ Map<String, dynamic> _$NgoModelToJson(NgoModel instance) => <String, dynamic>{
       'description': instance.description,
       'profilePhoto': instance.profilePhoto,
       'photos': instance.photos,
+      'type': instance.type,
       'fieldsOfImpact': instance.fieldsOfImpact,
       'previousWork': instance.previousWork,
       'currentGoals': instance.currentGoals,
@@ -53,5 +56,6 @@ Map<String, dynamic> _$NgoModelToJson(NgoModel instance) => <String, dynamic>{
       'emails': instance.emails,
       'community': instance.community,
       'news': instance.news,
+      'mission': instance.mission,
       'firstTimeLogin': instance.firstTimeLogin,
     };

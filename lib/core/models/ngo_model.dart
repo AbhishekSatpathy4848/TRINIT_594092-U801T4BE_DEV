@@ -11,6 +11,7 @@ class NgoModel {
   String? description;
   String? profilePhoto;
   List<String>? photos;
+  String? type;
   List<String>? fieldsOfImpact;
   List<String>? previousWork;
   List<List<String>>?
@@ -24,6 +25,7 @@ class NgoModel {
   List<String>? emails;
   String? community;
   List<String>? news;
+  String? mission;
   bool? firstTimeLogin;
 
   NgoModel(
@@ -31,6 +33,7 @@ class NgoModel {
       required this.description,
       required this.profilePhoto,
       required this.photos,
+      required this.type,
       required this.fieldsOfImpact,
       required this.previousWork,
       required this.currentGoals,
@@ -43,6 +46,7 @@ class NgoModel {
       required this.emails,
       required this.community,
       required this.news,
+      required this.mission,
       required this.firstTimeLogin});
 
   Future createNgo(NgoModel ngo) async {

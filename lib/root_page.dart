@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:ngo_hackathon/core/pages/search_page.dart';
+import 'package:ngo_hackathon/features/registration/presentation/first_time_philanthrophist.dart';
 
 import 'core/pages/home.dart';
 import 'core/pages/profile_page.dart';
@@ -15,7 +15,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   int currentpage = 0;
   final screens = [
-    const HomePage(),
+    const NewPhilanthrophist(),
     const SearchPage(),
     const ProfilePage(),
   ];
